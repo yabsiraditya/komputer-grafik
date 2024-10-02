@@ -20,12 +20,6 @@ public class OvalWithKeyword extends JPanel implements KeyListener{
     
     private int x = 100;
     private int y = 100;
-    private int x1 = 270;
-    private int y1 = 100;
-    private int x2 = 280;
-    private int y2 = 105;
-    private int x3 = 280;
-    private int y3 = 130;
     private int width = 60;
     private int height = 60;
     private int deltax = 0;
@@ -43,11 +37,11 @@ public class OvalWithKeyword extends JPanel implements KeyListener{
         g.setColor(Color.yellow);
         g.fillRect(x, y, 200, 50);
         g.setColor(Color.WHITE);
-        g.fillArc(x1, y1, 20, 20, 0, 360);
+        g.fillArc(x+170, y, 20, 20, 0, 360);
         g.setColor(Color.BLACK);
-        g.fillArc(x2, y2, 10, 10, 0, 360);
+        g.fillArc(x+180, y+5, 10, 10, 0, 360);
         g.setColor(Color.red);
-        g.fillRect(x3, y3, 20,5);
+        g.fillRect(x+180, y+30, 20,5);
     }
 
     
@@ -71,32 +65,11 @@ public class OvalWithKeyword extends JPanel implements KeyListener{
         
         x += deltax;
         y += deltay;
-        x1 += deltax;
-        y1 += deltay;
-        x2 += deltax;
-        y2 += deltay;
-        x3 += deltax;
-        y3 += deltay;
         
         if (x < 0) x = 0;
         if (x > getWidth() - width) x = getWidth() - width;
         if (y < 0) y = 0;
-        if (y > getWidth() - height) y = getWidth() - height;
-        
-        if (x1 < 0) x1 = 0;
-        if (x1 > getWidth() - width) x1 = getWidth() - width;
-        if (y1 < 0) y1 = 0;
-        if (y1 > getWidth() - height) y1 = getWidth() - height;
-        
-        if (x2 < x) x2 = 0;
-        if (x2 > getWidth() - width) x2 = getWidth() - width;
-        if (y2 < 0) y2 = 0;
-        if (y2 > getWidth() - height) y2 = getWidth() - height;
-        
-        if (x3 < 0) x3 = 0;
-        if (x3 > getWidth() - width) x3 = getWidth() - width;
-        if (y3 < 0) y3 = 0;
-        if (y3 > getWidth() - height) y3 = getWidth() - height;
+        if (y > getHeight() - height) y = getHeight() - height;
 
         repaint();
     }

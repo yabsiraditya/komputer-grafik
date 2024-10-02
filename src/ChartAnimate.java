@@ -14,57 +14,75 @@ import javax.swing.JPanel;
 import java.awt.Graphics;
 
 public class ChartAnimate extends JPanel implements Runnable {
+    
+    int x=50;
+    int y=50;
+    int width = 500;
+    int height = 500;
+    
+    private int move1;
+    private int move2;
+    private int move3;
+    private int move4;
 
-    @Override
+  @Override
     public void run() {
-        try {
-            while(true) {
-//                x+= 10;
-//                y += 10;
-//                if (x == 90) {
-//                    x +=10;
-//                    y=80;
-//                } else if (x >= 90) {
-//                    x = 90;
-//                    y += 10;
-//                }
-//                else if (y == 90) {
-//                    x -=10;
-//                    y =90;
-//                }
-//                
-                if (y < 225) {
-                    y+=10;
-                }
-                else if (y == 225) {
-                    y-=10;
+        while (move1 < 210) {   
+            move1 += 10;
+            try {
+                if (move1 == 210) {
+                    break;
                 }
                 repaint();
-                Thread.sleep(500);
-                
+                Thread.sleep(200);
+            } catch (InterruptedException ex) {
             }
-//            Thread.sleep(500);
         }
-        catch(Exception e){   
+        while (move2 < 80) {   
+            move2 += 10;
+            try {
+                if (move2 == 80) {
+                    break;
+                }
+                repaint();
+                Thread.sleep(200);
+            } catch (InterruptedException ex) {
+            }
+        }
+        while (move3 < 40) {   
+            move3 += 10;
+            try {
+                if (move3 == 40) {
+                    break;
+                }
+                repaint();
+                Thread.sleep(200);
+            } catch (InterruptedException ex) {
+            }
+        }
+        while (move4 < 40) {   
+            move4 += 10;
+            try {
+                if (move4 == 40) {
+                    break;
+                }
+                repaint();
+                Thread.sleep(200);
+            } catch (InterruptedException ex) {
+            }
         }
     }
-    
-    private int x = 10;
-    private int y = 15;    
 
     public void paintComponent(Graphics g) {
         super.paintComponent(g);
-//        g.setColor(Color.red);
-//        g.fillRect(x,y,40,40);
-        g.drawString("Sales",40,40);
         g.setColor(Color.BLUE);
-        g.fillArc(50, 50, 500, 500, 90, -y);
+        g.fillArc(x, y, width, height, 90, -move1);
         g.setColor(Color.RED);
-        g.fillArc(50, 50, 500, 500, 240, -80);
+        g.fillArc(x, y, width, height, 240, -move2);
         g.setColor(Color.LIGHT_GRAY);
-        g.fillArc(50, 50, 500, 500, 160, -40);
+        g.fillArc(x, y, width, height, 160, -move3);
         g.setColor(Color.ORANGE);
-        g.fillArc(50, 50, 500, 500, 120, -30);    
+        g.fillArc(x, y, width, height, 120, -move4); 
     }
     
     @SuppressWarnings("unchecked")
@@ -84,14 +102,14 @@ public class ChartAnimate extends JPanel implements Runnable {
     }// </editor-fold>//GEN-END:initComponents
 
     public static void main(String[] args) {
-        JFrame fr = new JFrame("line");
-        ChartAnimate ln = new ChartAnimate();
-        fr.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        fr.setSize(600,600);
-        fr.add(ln);
-        fr.setVisible(true);
+        JFrame frame = new JFrame();
+        ChartAnimate chart = new ChartAnimate();
+        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        frame.setSize(700, 700);
+        frame.add(chart);
+        frame.setVisible(true);
         
-        Thread t = new Thread(ln);
+        Thread t = new Thread(chart);
         t.start();
     }
 
